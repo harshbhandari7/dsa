@@ -2,9 +2,10 @@ nums=list(map(int, input().split()))
 target=int(input())
 leng=len(nums)
 res=[]
-for i in range(0, leng-1):
-    for j in range(i+1, leng):
-        if(nums[i]+nums[j] == target):
-            res = [i, j]
-            break
+key_values = {}
+for i in range(leng):
+    foo = target - nums[i]
+    if foo in key_values:
+        return [key_values[foo], i]
+    key_values[nums[i]] = i
 print(res)
